@@ -7,10 +7,11 @@ import { bundleMDX } from '~/util/mdx.server'
 import { readContentFile } from '~/util/fs.server'
 
 export const loader: LoaderFunction = async ({ params }) => {
-  const source = await readContentFile(`${params.slug}.mdx`)
-  if (!source) {
+  const post = params.slug
+  if (!post) {
     throw new Response('Not Found', { status: 404 })
   }
+  const source = await readContentFile(`${post}.mdx`)
   const data = await bundleMDX({
     source,
     files: {
