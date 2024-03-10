@@ -1,3 +1,7 @@
+import { installGlobals } from "@remix-run/node";
+
+installGlobals();
+
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
 	ignoredRouteFiles: ["**/.*"],
